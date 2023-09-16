@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 
 public class _04 extends JFrame {
 	private static final long serialVersionUID = 1L;
-	JTextField txtPies, txtMetros;
+	JTextField txtPies, txtMetros, txtPulgadas;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -32,7 +32,7 @@ public class _04 extends JFrame {
 	
 	public _04() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 300, 250);
+		setBounds(0, 0, 300, 300);
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 		
@@ -40,8 +40,12 @@ public class _04 extends JFrame {
 		lblPies.setBounds(50, 50, 80, 30);
 		getContentPane().add(lblPies);
 		
+		JLabel lblPulgadas = new JLabel("Pulgadas :");
+		lblPulgadas.setBounds(50, 100, 80, 30);
+		getContentPane().add(lblPulgadas);
+		
 		JLabel lblMetros = new JLabel("Metros :");
-		lblMetros.setBounds(50, 90, 80, 30);
+		lblMetros.setBounds(50, 150, 80, 30);
 		getContentPane().add(lblMetros);
 		
 		txtPies = new JTextField();
@@ -50,15 +54,21 @@ public class _04 extends JFrame {
 		txtPies.setBounds(140, 50, 60, 30);
 		getContentPane().add(txtPies);
 		
+		txtPulgadas = new JTextField();
+		txtPulgadas.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtPulgadas.setMargin( new Insets(5,5,5,5));
+		txtPulgadas.setBounds(140, 100, 60, 30);
+		getContentPane().add(txtPulgadas);
+		
 		txtMetros = new JTextField();
-		txtMetros.setBounds(140, 90, 60, 30);
+		txtMetros.setBounds(140, 150, 60, 30);
 		txtMetros.setFocusable(false);
 		txtMetros.setHorizontalAlignment(SwingConstants.RIGHT);
 		txtMetros.setMargin( new Insets(5,5,5,5));
 		getContentPane().add(txtMetros);
 		
 		JButton btnCalcular = new JButton("Calcular");
-		btnCalcular.setBounds(100, 150, 100, 30);
+		btnCalcular.setBounds(100, 200, 100, 30);
 		btnCalcular.setMnemonic('a');
 		getContentPane().add(btnCalcular);
 		
@@ -70,9 +80,11 @@ public class _04 extends JFrame {
 	}	
 	protected void btnCalcular_actionPerformed() {
 		double pies = Double.parseDouble( txtPies.getText() );
-		double metros = pies / 3.2808;
+		int pulgadas = Integer.parseInt(txtPulgadas.getText());
+		
+		double metros = (pies *12 + pulgadas) * 2.54 / 100;
+		
 		DecimalFormat df = new DecimalFormat("##.00");
-		txtPies.setText( df.format(pies));
 		txtMetros.setText( df.format(metros));
 	}
 	
