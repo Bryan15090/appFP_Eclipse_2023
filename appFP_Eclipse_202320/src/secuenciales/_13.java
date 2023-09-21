@@ -80,7 +80,7 @@ public class _13 extends JFrame {
 			
 			private void btnCalcular_actionPerformed() {
 			
-				Double copuesto = Double.parseDouble(txtCOpuesto.getText());
+				double copuesto = Double.parseDouble(txtCOpuesto.getText());
 				double cadyacente = Double.parseDouble(txtCAdyacente.getText());
 				
 				double hipotenusa = Math.sqrt(Math.pow(copuesto, 2) + Math.pow(cadyacente, 2));
